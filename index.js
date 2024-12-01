@@ -5,7 +5,7 @@ app.use(urlencoded({ extended: true }));
 app.use(json());
 
 app.get('/', (req, res) => {
-    res.send('Hello, Pratik Ghosh!');
+    res.send('Hello, Pratik Ghosh123!');
 });
 
 app.post('/data', (req, res) => {
