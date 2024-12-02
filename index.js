@@ -5,7 +5,7 @@ app.use(urlencoded({ extended: true }));
 app.use(json());
 
 app.get('/', (req, res) => {
-    res.send('Hello, Pratik Ghosh123!');
+    res.send('Hello, Pratik Ghosh!');
 });
 
 app.post('/data', (req, res) => {
@@ -15,9 +15,18 @@ app.post('/data', (req, res) => {
 });
 
 app.post('/endpoint', (req, res) => {
-    console.log('Received data:', req.body.message);
-    console.log('Received successfully');
-    res.status(200).send('Data received successfully');
+    const message = req.body.message;
+
+    if (message) {
+        console.log('Received data:', message);
+        console.log('Received successfully');
+
+        // Send response back to Arduino
+        res.status(200).send('Data received successfully');
+    } else {
+        console.log('No message received');
+        res.status(400).send('No message provided');
+    }
 });
 
 const PORT = process.env.PORT || 3000;
